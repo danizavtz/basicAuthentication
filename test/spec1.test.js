@@ -49,10 +49,10 @@ describe('#Index', () => {
         it('Check validation error for secure route', (done) => {
             api.get('/secure')
                 .set('Accept', 'application/json; charset=utf-8')
-                .expect(401)
+                .expect(400)
                 .end((err, res) => {
                     if (err) throw err;
-                    expect(res.status).to.equal(401);
+                    expect(res.status).to.equal(400);
                     done();
                 });
         });

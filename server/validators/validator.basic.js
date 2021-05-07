@@ -1,6 +1,6 @@
 const { header, validationResult } = require('express-validator');
 
-exports.validationBodyRules = [
+exports.validationHeaderRules = [
     header('Authorization', 'Authorization is required').exists(),
     header('Authorization', 'Authorization is required').notEmpty()
 ];
