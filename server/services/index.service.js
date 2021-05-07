@@ -1,5 +1,3 @@
-
-
 exports.default = (req, res) => {
     req.serverMsg = {msg: "Server up and running" }
     res.status(200).json(req.serverMsg);
@@ -9,7 +7,7 @@ exports.notFoundDefaultRoute = (req, res) => {
     res.status(404).json({ errors: [{location: req.path, msg: 'Not found', param: null}]});
 }
 
-exports.basicAuthRoute = (req, res, next) => {
+exports.basicAuthVerification = (req, res, next) => {
   const auth = {login: process.env.AUTHLOGIN, password: process.env.AUTHPASSWORD}
 
   const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
