@@ -25,3 +25,5 @@ jobs:
         PORT: 3000
         AUTHLOGIN: test
         AUTHPASSWORD: test
+        NODE_ENV: test
+

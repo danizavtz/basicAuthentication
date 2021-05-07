@@ -1,4 +1,3 @@
-process.env.NODE_ENV = 'test'
 const expect = require('chai').expect,
     supertest = require('supertest'),
     app = require('../app'),
