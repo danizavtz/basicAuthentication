@@ -6,7 +6,8 @@
   "scripts": {
     "start": "NODE_ENV=production node bin/www",
     "dev": "nodemon bin/www",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "coverage": "NODE_ENV=production nyc mocha --exit --reporter progress ./test/",
+    "test": "NODE_ENV=production mocha --reporter spec test/ --exit"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,10 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "chai": "^4.3.4",
+    "mocha": "^8.4.0",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "supertest": "^6.1.3"
   }
 }
