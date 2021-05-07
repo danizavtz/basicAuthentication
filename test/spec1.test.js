@@ -37,9 +37,64 @@ describe('#Index', () => {
                     done();
             });
         });
-        it('Check secure route with wrong user or password', (done) => {
+        it('Check secure route with wrong password', (done) => {
             api.get('/secure')
                 .auth('test', 't')
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(401)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(401);
+                    done();
+            });
+        });
+        it('Check secure route with wrong user', (done) => {
+            api.get('/secure')
+                .auth('t', 'test')
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(401)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(401);
+                    done();
+            });
+        });
+        it('Check secure route with empty user and password', (done) => {
+            api.get('/secure')
+                .auth('','')
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(401)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(401);
+                    done();
+            });
+        });
+        it('Check secure route with null password', (done) => {
+            api.get('/secure')
+                .auth('test', null)
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(401)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(401);
+                    done();
+            });
+        });
+        it('Check secure route with null user and password', (done) => {
+            api.get('/secure')
+                .auth(null, null)
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(401)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(401);
+                    done();
+            });
+        });
+        it('Check secure route with undefined user and password', (done) => {
+            api.get('/secure')
+                .auth(undefined, undefined)
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(401)
                 .end((err, res) => {
