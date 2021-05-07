@@ -8,7 +8,7 @@ const fs = require('fs'),
 describe('#Index', () => {
     describe('GET', () => {
         it('Check undefined route does not exist', (done) => {
-            api.get(`/${undefined}`)
+            api.get('/a')
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(404)
                 .end((err, res) => {
@@ -18,7 +18,17 @@ describe('#Index', () => {
             });
         });
         it('Check undefined route does not exist', (done) => {
-            api.get('/a')
+            api.get(`/${undefined}`)
+                .set('Accept', 'application/json; charset=utf-8')
+                .expect(404)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(404);
+                    done();
+            });
+        });
+        it('Check null route does not exist', (done) => {
+            api.get(`/${null}`)
                 .set('Accept', 'application/json; charset=utf-8')
                 .expect(404)
                 .end((err, res) => {
