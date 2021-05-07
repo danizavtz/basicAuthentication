@@ -1,5 +1,4 @@
-const fs = require('fs'),
-    expect = require('chai').expect,
+const expect = require('chai').expect,
     supertest = require('supertest'),
     app = require('../app'),
     server = app.listen(),
