@@ -4,9 +4,9 @@
   "description": "Project for practice basic authentication",
   "main": "bin/www",
   "scripts": {
-    "start": "NODE_ENV=production node bin/www",
+    "start": "node bin/www",
     "dev": "nodemon bin/www",
-    "coverage": "NODE_ENV=production nyc mocha --exit --reporter progress ./test/",
+    "coverage": "nyc mocha --exit --reporter progress ./test/",
     "test": "mocha --reporter spec test/ --exit"
   },
   "repository": {
