@@ -56,6 +56,32 @@ describe('#Index', () => {
                     done();
                 });
         });
+        it('Check validation error for basic auth malformed string', (done) => {
+            const username = 'user';
+            const password = 'password';
+            const b64encoded = Buffer.from(username + ':' + password).toString('base64')
+            const basicAuth = 'Basic ' + b64encoded;
+            api.get('/secure')
+                .set('Accept', 'application/json; charset=utf-8')
+                .set('Authorizatio', basicAuth)
+                .expect(400)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(400);
+                    done();
+                });
+        });
+        it('Check validation error for basic auth malformed not empty', (done) => {
+            api.get('/secure')
+                .set('Accept', 'application/json; charset=utf-8')
+                .set('Authorization', '')
+                .expect(400)
+                .end((err, res) => {
+                    if (err) throw err;
+                    expect(res.status).to.equal(400);
+                    done();
+                });
+        });
         it('Check secure route with wrong password', (done) => {
             api.get('/secure')
                 .auth('test', 't')
