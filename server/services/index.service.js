@@ -10,7 +10,7 @@ exports.notFoundDefaultRoute = (req, res) => {
 exports.basicAuthVerification = (req, res, next) => {
   const auth = { login: process.env.AUTHLOGIN, password: process.env.AUTHPASSWORD }
 
-  const b64auth = (req.headers.authorization || '').split(' ')[1] || ''
+  const b64auth = (req.headers.authorization).split(' ')[1] || ''
   const [login, password] = Buffer.from(b64auth, 'base64').toString().split(':')
 
   if (login && password && login === auth.login && password === auth.password) {
